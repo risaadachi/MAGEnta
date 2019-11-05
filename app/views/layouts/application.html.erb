@@ -10,6 +10,29 @@
   </head>
 
   <body>
+    <header>
+      <ul class="nav navbar-nav navbar-right">
+        <h3 class="MAGEnta"><%= link_to "MAGEnta", root_path %></h3>
+
+        <% if admin_signed_in? %>
+
+        <li class=""><%= link_to "ユーザ一覧", users_admins_path %></li>
+        <li class=""><%= link_to "コーデ一覧", codes_admins_path %></li>
+        <li class=""><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+
+        <% elsif user_signed_in? %>
+
+        <li class=""><%= link_to "#{current_user.name}", user_path(current_user.id) %></li>
+        <li class=""><%= link_to "Log_Out", destroy_user_session_path, method: :delete %></li>
+
+        <% else %>
+
+        <li class=""><%= link_to "New_User", new_user_registration_path %></li>
+        <li class=""><%= link_to "Log_In", new_user_session_path %></li>
+
+        <% end %>
+      </ul>
+    </header>
     <%= yield %>
   </body>
 </html>

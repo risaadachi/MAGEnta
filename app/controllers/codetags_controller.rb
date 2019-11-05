@@ -1,0 +1,2 @@
+class CodetagsController < ApplicationController
+end
