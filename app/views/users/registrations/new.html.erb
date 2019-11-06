@@ -1,0 +1,52 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.select :gender, ["Man","Woman","Unselect"], autofocus: true, autocomplete: "gender" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :height %><br />
+    <%= f.select :height,
+    ["140cm Under", "141cm", "142cm", "143cm", "144cm",
+      "145cm", "146cm", "147cm", "148cm", "149cm", "150cm", "151cm", "152cm",
+      "153cm", "154cm", "155cm", "156cm", "157cm", "158cm", "159cm", "160cm",
+      "161cm", "162cm", "163cm", "164cm", "165cm", "166cm", "167cm", "168cm",
+      "169cm", "170cm", "171cm", "172cm", "173cm", "174cm", "175cm", "176cm",
+      "177cm", "178cm", "179cm", "180cm", "181cm", "182cm", "183cm", "184cm",
+      "185cm", "186cm", "187cm", "188cm", "189cm", "190cm Over"],
+      :prompt=> 'Please select', autofocus: true, autocomplete: "height" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
