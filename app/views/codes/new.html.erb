@@ -1,12 +1,11 @@
 <h1>Post</h1>
 
-<%= form_for (@code) do |f| %>
-<%= f.label :photo %>
-<%= f.attachment_field :photo %>
-
-<%= f.text_field :title, :placeholder => "Title" %>
-<%= f.text_field :body, :placeholder => "Explanation" %>
-
+<%= form_with model: @code, local: true do |f| %>
+<%= f.file_field :photos, multiple: true %><br>
+<%= f.text_field :title, :placeholder => "Title" %><br>
+<%= f.text_area :body, :placeholder => "Explanation" %><br>
 <%= f.submit %>
+
+<!-- multiple: trueで複数画像アップ -->
 
 <% end %>
