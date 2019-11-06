@@ -1,2 +1,12 @@
-<h1>Codes#new</h1>
-<p>Find me in app/views/codes/new.html.erb</p>
+<h1>Post</h1>
+
+<%= form_for (@code) do |f| %>
+<%= f.label :photo %>
+<%= f.attachment_field :photo %>
+
+<%= f.text_field :title, :placeholder => "Title" %>
+<%= f.text_field :body, :placeholder => "Explanation" %>
+
+<%= f.submit %>
+
+<% end %>
