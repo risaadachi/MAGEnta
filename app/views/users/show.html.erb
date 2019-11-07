@@ -1,2 +1,26 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>User page</h1>
+
+<!-- User情報 -->
+<% if @user.profile_image.attached?%>
+<%= image_tag @user.profile_image, :size => '80x80' %> /
+<% end %>
+<%= @user.name %> /
+<%= @user.gender %> /
+<%= @user.height %>cm /
+
+
+<% if @user == current_user %>
+  <%= link_to "Edit", edit_user_path(@user.id) %><br>
+<% end %>
+
+
+<!-- Code情報 -->
+<% @codes.each do |code| %>
+<% if code.photos.attached? %>
+<% code.photos.count.times do |i| %>
+    <%= image_tag code.photos[i], :size => '200x200' %><br>
+<% end %>
+    <%= link_to "詳細", code_path(code.id) %>
+<% end %>
+    <%= code.title %><br>
+<% end %>

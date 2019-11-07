@@ -9,12 +9,13 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :codes, dependent: :destroy
 
+   # active_storageの記述
+    has_one_attached :profile_image
+
   with_options presence: true do
   	validates :name
   	validates :gender
   	validates :height
-  	validates :email
-  	validates :password
   end
 
   with_options uniqueness: true do

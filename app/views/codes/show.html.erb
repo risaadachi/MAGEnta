@@ -1,11 +1,21 @@
 <h1>Codes</h1>
 
+<!-- userの情報 -->
+
+<%= link_to "#{@code.user.name}", user_path(@code.user.id) %><br>
+<%= @code.user.gender %><br>
+<%= @code.user.height %>cm<br>
+
+<!-- codeの情報 -->
+
 <% @code.photos.count.times do |i| %>
     <%= image_tag @code.photos[i], :size => '200x200' %><br>
 <% end %>
 <%= @code.title %><br>
 <%= @code.body %><br>
 <%= @code.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+
+<!-- 編集と削除 -->
 
 <% if @code.user == current_user %>
     <%= link_to "Edit", edit_code_path(@code.id) %>
