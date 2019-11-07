@@ -1,2 +1,8 @@
 <h1>Codes#edit</h1>
-<p>Find me in app/views/codes/edit.html.erb</p>
+
+<%= form_with model: @code, local: true do |f| %>
+<%= f.file_field :photos, multiple: true %><br>
+<%= f.text_field :title, :placeholder => "Title" %><br>
+<%= f.text_area :body, :placeholder => "Explanation" %><br>
+<%= f.submit %>
+<% end %>

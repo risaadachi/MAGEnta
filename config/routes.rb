@@ -20,7 +20,7 @@ resources :users, only: [:update, :show, :edit, :destroy]
 get 'codes/admins_index' => 'codes#admins_index', as:'codes_admins'
 get 'codes/admins/:id' => 'codes#admins_show', as:'code_admins'
 patch 'codes/admins_delete/:id' => 'codes#admins_destroy', as:'code_admins_destroy'
-resources :codes, only: [:show, :new, :edit, :create] do
+resources :codes, only: [:show, :new, :edit, :create, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resource :comments, only: [:create, :destroy]
 end
