@@ -4,7 +4,9 @@ class Code < ApplicationRecord
 	has_many :tags, through: :codetags
 	has_many :codetags, dependent: :destroy
 	has_many :comments, dependent: :destroy
-	belongs_to :user, optional: true
+	belongs_to :user
+
+  # optional: true 外部キーnilでもいける記述
 
     # active_storageの記述
     has_many_attached :photos
@@ -13,6 +15,7 @@ class Code < ApplicationRecord
   	  validates :title
   	  validates :body
   	  validates :photos
+      validates :user_id
     end
 
     # def thumbnail input

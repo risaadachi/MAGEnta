@@ -1,2 +1,13 @@
-<h1>Codes#show</h1>
+<h1>Codes</h1>
 
+<% @code.photos.count.times do |i| %>
+    <%= image_tag @code.photos[i], :size => '200x200' %><br>
+<% end %>
+<%= @code.title %><br>
+<%= @code.body %><br>
+<%= @code.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+
+<% if @code.user == current_user %>
+    <%= link_to "Edit", edit_code_path(@code.id) %>
+    <%= link_to "Delete", code_path(@code.id), method: :delete %>
+<% end %>
