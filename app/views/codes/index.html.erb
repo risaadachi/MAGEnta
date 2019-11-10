@@ -1,13 +1,4 @@
 <h1>コーデ一覧</h1>
 
-<% @codes.each do |code| %>
-<% if code.photos.attached? %>
-<% code.photos.count.times do |i| %>
-    <%= image_tag code.photos[i], :size => '200x200' %><br>
-    <%= link_to "詳細", code_path(code.id) %>
-<% end %>
-<% end %>
-    <%= code.title %><br>
-<% end %>
-
+<%= render 'codes/index', codes: @codes %>
 

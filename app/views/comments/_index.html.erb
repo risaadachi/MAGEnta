@@ -1,0 +1,14 @@
+
+<% comments.each do |c| %>
+<% if c.user.profile_image.attached? %>
+     <br><%= image_tag c.user.profile_image, :size => '60x60' %>
+<% end %>
+<%= c.user.name %>
+<%= c.created_at.strftime('%Y/%m/%d') %>
+<%= c.body %> <br>
+
+<% if c.user == current_user %>
+    <%= link_to 'Delete', code_comments_path(c.id), method: :delete %>
+<!-- 非同期したい　, remote: true -->
+<% end %>
+<% end %>

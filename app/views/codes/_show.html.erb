@@ -1,0 +1,19 @@
+
+<!-- userの情報 -->
+<% if code.user.profile_image.attached? %>
+    <%= image_tag code.user.profile_image, :size => '80x80' %>
+<% end %>
+<%= link_to "#{code.user.name}", user_path(code.user.id) %> /
+<%= code.user.gender %> /
+<%= code.user.height %>cm<br>
+
+<!-- codeの情報 -->
+
+<% code.photos.count.times do |i| %>
+    <%= image_tag code.photos[i], :size => '200x200' %><br>
+<% end %>
+<%= code.title %><br>
+<%= code.body %><br>
+<%= code.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+
+

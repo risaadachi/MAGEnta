@@ -1,0 +1,9 @@
+<% codes.each do |code| %>
+<% if code.photos.attached? %>
+<% code.photos.count.times do |i| %>
+    <%= image_tag code.photos[i], :size => '200x200' %><br>
+<% end %>
+    <%= link_to "詳細", code_path(code.id) %>
+<% end %>
+    <%= code.title %><br>
+<% end %>

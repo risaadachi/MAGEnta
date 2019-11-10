@@ -1,0 +1,7 @@
+<h1>Codes</h1>
+
+<%= render 'codes/show', code: @code %>
+
+<!-- 削除 -->
+
+<%= link_to "Delete", code_admins_destroy_path(@code.id), method: :delete %>
