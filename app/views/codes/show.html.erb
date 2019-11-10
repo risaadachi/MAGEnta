@@ -1,19 +1,14 @@
 <h1>Codes</h1>
 
-<!-- userの情報 -->
+<%= render 'codes/show', code: @code %>
 
-<%= link_to "#{@code.user.name}", user_path(@code.user.id) %><br>
-<%= @code.user.gender %><br>
-<%= @code.user.height %>cm<br>
-
-<!-- codeの情報 -->
-
-<% @code.photos.count.times do |i| %>
-    <%= image_tag @code.photos[i], :size => '200x200' %><br>
+<!-- いいねコメント -->
+<%= form_for [@code, @comment] do |f| %>
+    <%= f.text_area :body, placeholder: "Comment!!" %>
+    <%= f.submit 'Submit' %>
 <% end %>
-<%= @code.title %><br>
-<%= @code.body %><br>
-<%= @code.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+
+<%= render 'comments/index', comments: @comments, code: @code %>
 
 <!-- 編集と削除 -->
 

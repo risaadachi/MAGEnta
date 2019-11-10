@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!, only: [:show, :edit]
-  before_action :authenticate_admin!, only: [:index]
+  before_action :authenticate_admin!, only: [:index, :admins_deleted_flag]
 
   def show
   	@user = User.find(params[:id])
@@ -21,14 +21,17 @@ class UsersController < ApplicationController
   end
 
 
-# admin
+# adminß
 
   def admins_index
-
+    @users = User.all
   end
 
+#    @users = User.where(deleted_flag: "false").page(params[:page]).per(9)
 
 
+  def admins_deleted_flag
+  end
 
 
   private

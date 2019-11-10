@@ -1,1 +1,11 @@
-<h1>admins_index</h1>
+<h1>管理者　ユーザ一覧</h1>
+
+<% @users.each do |user| %>
+	<% if user.profile_image.attached?%>
+    <%= image_tag user.profile_image, :size => '80x80' %> <br>
+    <% end %>
+    ★<%= user.name %> <br>
+    <%= user.gender %> <br>
+    <%= user.height %>cm <br>
+    <br>
+<% end %>

@@ -1,4 +1,6 @@
 class CodesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :edit, :destroy]
+  before_action :authenticate_admin!, only: [:admins_index, :admins_show, :admins_destroy, :admins_search]
 
   def index
   	@codes = Code.all
@@ -8,6 +10,8 @@ class CodesController < ApplicationController
 
   def show
   	@code = Code.find(params[:id])
+    @comment = Comment.new
+    @comments = @code.comments
   end
 
   def new
@@ -38,6 +42,23 @@ class CodesController < ApplicationController
   	code.destroy
   	redirect_to user_path(current_user.id)
   end
+
+# admin
+
+  def admins_index
+        @codes = Code.all
+  end
+
+  def admins_show
+        @code = Code.find(params[:id])
+  end
+
+  def admins_destroy
+  end
+
+  def admins_search
+  end
+
 
   private
   def code_params
