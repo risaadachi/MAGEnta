@@ -34,13 +34,13 @@ class CodesController < ApplicationController
 
   def create
   	@code = Code.new(code_params)
+    # codeをnewする時に一緒にtagも保存。codetag、tagDBも一緒に
   	@code.user_id = current_user.id
     @tag_list = params[:code][:tagname].split(",")
     # split(",")=文字列を1文字ずつ分割  split=文字列を分割して配列にする場合に使用
-    if@code.save!
-      binding.pry
-      @code.save_codes(@tag_list)
-      redirect_to root_path
+    if @code.save!
+       @code.save_codes(@tag_list)
+       redirect_to root_path
     else
       render 'code/new'
     end
@@ -88,6 +88,6 @@ end
 private
 def code_params
  # params.require(:code).permit(:user_id, :title, :body, {photos: []}, {tag_id: []})
-  params.require(:code).permit(:user_id, :title, :body, {photos: []}, {tag_id: :tagname})
+  params.require(:code).permit(:user_id, :title, :body, {photos: []}, {:tag_ids　=> [] })
 end
 end
