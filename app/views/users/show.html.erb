@@ -16,11 +16,19 @@
 
 <!-- Code情報 -->
 <% @codes.each do |code| %>
-<% if code.photos.attached? %>
-<% code.photos.count.times do |i| %>
-    <%= image_tag code.photos[i], :size => '200x200' %><br>
+	<% if code.photos.attached? %>
+		<% code.photos.count.times do |i| %>
+		<%= image_tag code.photos[i], :size => '200x200' %><br>
+	    <% end %>
+	    <%= link_to "show", code_path(code.id) %>
+	<% end %>
+	<%= code.title %><br>
+
+	<!-- 編集と削除 -->
+	<% if code.user == current_user %>
+		<%= link_to "Edit", edit_code_path(code.id) %>
+		<%= link_to "Delete", code_path(code.id), method: :delete %><br>
+	<% end %>
 <% end %>
-    <%= link_to "詳細", code_path(code.id) %>
-<% end %>
-    <%= code.title %><br>
-<% end %>
+
+
