@@ -16,4 +16,9 @@
 <%= code.body %><br>
 <%= code.created_at.strftime('%Y/%m/%d %H:%M') %><br>
 
+<!-- tag -->
+<% code.tags.each do |t| %>
+    <%= link_to t.tagname, codes_path(tag_id: t.id) %>
+<% end %>
+
 

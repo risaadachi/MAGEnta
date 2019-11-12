@@ -4,8 +4,13 @@
 <%= f.file_field :photos, multiple: true %><br>
 <%= f.text_field :title, :placeholder => "Title" %><br>
 <%= f.text_area :body, :placeholder => "Explanation" %><br>
+
+<%= f.text_field :tagname, value: @tag_list, :placeholder => "Tag" %><br>
+
+
 <%= f.submit %>
 
 <!-- multiple: trueで複数画像アップ -->
+
 
 <% end %>
