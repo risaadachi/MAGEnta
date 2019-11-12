@@ -4,7 +4,13 @@ class CodesController < ApplicationController
 
   def index
   	@codes = Code.all
-
+    # if params[:tag_id]
+    #   @tag = Tag.find(params[:tag_id])
+    #   @codes = @tag.codes.order(time: "DESC")
+    #   # order(time: "DESC")　時間の降順
+    # else
+    #   @codes = Code.order(time: "DESC")
+    # end
   	# where(deleted_flag: "false")
   end
 
@@ -12,6 +18,14 @@ class CodesController < ApplicationController
   	@code = Code.find(params[:id])
     @comment = Comment.new
     @comments = @code.comments
+    if params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+      @codes = @tag.codes.order(time: "DESC")
+      # order(time: "DESC")　時間の降順
+    else
+      @codes = Code.order(time: "DESC")
+    end
+
   end
 
   def new
@@ -19,22 +33,33 @@ class CodesController < ApplicationController
   end
 
   def create
-  	@code = Code.create params.require(:code).permit(:user_id, :title, :body, {photos: []})
-  	# activestorageで画像投稿のストロングパラメータ
   	@code = Code.new(code_params)
   	@code.user_id = current_user.id
-  	@code.save
-  	redirect_to root_path
+    @tag_list = params[:code][:tagname].split(",")
+    # split(",")=文字列を1文字ずつ分割  split=文字列を分割して配列にする場合に使用
+    if@code.save!
+      binding.pry
+      @code.save_codes(@tag_list)
+      redirect_to root_path
+    else
+      render 'code/new'
+    end
   end
 
   def edit
   	@code = Code.find(params[:id])
+    @tag_list = @code.tags.pluck(:tagname).join(",")
   end
 
   def update
   	code = Code.find(params[:id])
-  	code.update(code_params)
-  	redirect_to code_path(code)
+    @tag_list = params[:code][:tagname].split(",")
+    if code.update!(code_params)
+      code.save_codes(@tag_list)
+      redirect_to code_path(code)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -45,23 +70,24 @@ class CodesController < ApplicationController
 
 # admin
 
-  def admins_index
-        @codes = Code.all
-  end
+def admins_index
+  @codes = Code.all
+end
 
-  def admins_show
-        @code = Code.find(params[:id])
-  end
+def admins_show
+  @code = Code.find(params[:id])
+end
 
-  def admins_destroy
-  end
+def admins_destroy
+end
 
-  def admins_search
-  end
+def admins_search
+end
 
 
-  private
-  def code_params
-  	params.require(:code).permit(:user_id, :title, :body, photos: [])
-  end
+private
+def code_params
+ # params.require(:code).permit(:user_id, :title, :body, {photos: []}, {tag_id: []})
+  params.require(:code).permit(:user_id, :title, :body, {photos: []}, {tag_id: :tagname})
+end
 end

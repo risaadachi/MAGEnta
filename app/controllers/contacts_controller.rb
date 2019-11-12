@@ -3,4 +3,14 @@ class ContactsController < ApplicationController
 
   def index
   end
+
+  def create
+  	@contact = Contact.new(contact_params)
+  end
+
+
+  private
+  def contact_params
+  	  params.require(:contact).permit(:user_id, :title, :body)
+  end
 end
