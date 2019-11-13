@@ -4,14 +4,14 @@ class CodesController < ApplicationController
 
   def index
   	@codes = Code.all
-    # if params[:tag_id]
-    #   @tag = Tag.find(params[:tag_id])
-    #   @codes = @tag.codes.order(time: "DESC")
-    #   # order(time: "DESC")　時間の降順
-    # else
-    #   @codes = Code.order(time: "DESC")
-    # end
-  	# where(deleted_flag: "false")
+    @tag_list = Tag.all
+    if params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+      @codes = @tag.codes.order(time: "DESC")
+      # order(time: "DESC")　時間の降順
+    else
+      @codes = Code.order(time: "DESC")
+    end
   end
 
   def show

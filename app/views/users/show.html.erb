@@ -24,6 +24,12 @@
 	<% end %>
 	<%= code.title %><br>
 
+	    <!-- tag -->
+<% code.tags.each do |t| %>
+    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
+<% end %>
+
+
 	<!-- 編集と削除 -->
 	<% if code.user == current_user %>
 		<%= link_to "Edit", edit_code_path(code.id) %>

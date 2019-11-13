@@ -6,4 +6,10 @@
     <%= link_to "show", code_path(code.id) %>
 <% end %>
     <%= code.title %><br>
+
+    <!-- tag -->
+<% code.tags.each do |t| %>
+    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
+<% end %>
+
 <% end %>

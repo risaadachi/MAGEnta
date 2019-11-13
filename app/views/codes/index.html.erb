@@ -2,3 +2,6 @@
 
 <%= render 'codes/index', codes: @codes %>
 
+<% @tag_list.each do |list| %>
+    <%= link_to list.tagname,root_path(tag_id:list.id) %><%= list.codes.count %><br>
+<% end %>
