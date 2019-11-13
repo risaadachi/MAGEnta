@@ -5,6 +5,9 @@ class CodesController < ApplicationController
   def index
   	@codes = Code.all
     @tag_list = Tag.all
+    @search = @codes.ransack(params[:q])
+    @search_codes = @search.result(distinct: true).resent
+    # distinct: true 重複を避ける
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
       @codes = @tag.codes.order(time: "DESC")
@@ -12,6 +15,9 @@ class CodesController < ApplicationController
     else
       @codes = Code.order(time: "DESC")
     end
+  end
+
+  def search
   end
 
   def show
