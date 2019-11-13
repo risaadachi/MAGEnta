@@ -1,13 +1,15 @@
-<h1>コーデ一覧</h1>
+<h1>Coordinate</h1>
 
 <%= search_form_for @search, url: root_path do |s| %>
     <%= s.search_field :title_or_body_or_user_name_or_tags_tagname_cont, placeholder: 'code search' %>
     <!-- , class: "search-box" -->
     <%= s.submit "search" %>
-<% end %>
+<% end %><br>
 
 <%= render 'codes/index', codes: @search_codes %>
 
 <% @tag_list.each do |list| %>
     <%= link_to list.tagname,root_path(tag_id:list.id) %><%= list.codes.count %><br>
 <% end %>
+
+<%= paginate @search_codes, class: "paginate" %>

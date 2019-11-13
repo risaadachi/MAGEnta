@@ -1,3 +1,5 @@
 <h1>adminsコーデ一覧</h1>
 
 <%= render 'code/index', codes: @codes %>
+
+<%= paginate @codes, class: "paginate" %>

@@ -1,12 +1,13 @@
 class CodesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :destroy]
   before_action :authenticate_admin!, only: [:admins_index, :admins_show, :admins_destroy, :admins_search]
+  impressionist :actions => [:show]
 
   def index
   	@codes = Code.all
     @tag_list = Tag.all
     @search = @codes.ransack(params[:q])
-    @search_codes = @search.result(distinct: true)
+    @search_codes = @search.result(distinct: true).page(params[:page]).reverse_order
     # distinct: true 重複を避ける
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
@@ -22,6 +23,8 @@ class CodesController < ApplicationController
 
   def show
   	@code = Code.find(params[:id])
+    impressionist(@code, nil, :unique => [:session_hash])
+    #  pv計測の記述
     @comment = Comment.new
     @comments = @code.comments
     if params[:tag_id]
@@ -77,7 +80,7 @@ class CodesController < ApplicationController
 # admin
 
 def admins_index
-  @codes = Code.all
+  @codes = Code.page(params[:page]).reverse_order
 end
 
 def admins_show
