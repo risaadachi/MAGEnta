@@ -6,7 +6,7 @@ class CodesController < ApplicationController
   	@codes = Code.all
     @tag_list = Tag.all
     @search = @codes.ransack(params[:q])
-    @search_codes = @search.result(distinct: true).resent
+    @search_codes = @search.result(distinct: true)
     # distinct: true 重複を避ける
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
