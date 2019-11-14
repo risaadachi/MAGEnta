@@ -3,7 +3,13 @@
 <% code.photos.count.times do |i| %>
     <%= image_tag code.photos[i], :size => '200x200' %><br>
 <% end %>
-    <%= link_to "詳細", code_path(code.id) %>
+    <%= link_to "show", code_path(code.id) %>
 <% end %>
     <%= code.title %><br>
+
+    <!-- tag -->
+<% code.tags.each do |t| %>
+    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
+<% end %>
+
 <% end %>

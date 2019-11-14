@@ -1,0 +1,15 @@
+<h1>Ranking</h1>
+
+
+<% @mv.each.with_index(1) do |rank, n| %>
+    Rank.No. <%= "#{n}" %><br>
+    <%= rank.impressions_count %> pv<br>
+    <% if rank.photos.attached? %>
+		<% rank.photos.count.times do |i| %>
+			<%= image_tag rank.photos[i], :size => '200x200' %><br>
+		<% end %>
+	<% end %>
+    <%= rank.title %><br>
+    <%= link_to "show", code_path(rank.id) %><br>
+<br>
+<% end %>

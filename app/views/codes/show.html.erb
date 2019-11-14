@@ -3,6 +3,13 @@
 <%= render 'codes/show', code: @code %>
 
 
+<!-- PV -->
+
+<%= @code.impressionist_count %> pv <br>
+
+<!-- Get the unique impression count from a model filtered by session hash. Same as #6 regarding request hash. This may be more desirable than filtering by IP address depending on your situation, since filtering by IP may ignore visitors that use the same IP. The downside to this filtering is that a user could clear session data in their browser and skew the results.
+↑READMEより。
+ユーザが見た分増える。リロード、いいね、コメントしても増えない。 -->
 
 <!-- いいね -->
 <% if user_signed_in? %>
@@ -33,11 +40,11 @@
     <%= f.submit 'Submit' %><br>
 <% end %>
 
-<%= render 'comments/index', comments: @comments, code: @code %>
+<%= render 'comments/index', comments: @comments, code: @code %><br>
 
 <!-- 編集と削除 -->
 
 <% if @code.user == current_user %>
-    <%= link_to "Edit", edit_code_path(@code.id) %>
-    <%= link_to "Delete", code_path(@code.id), method: :delete %>
+    <%= link_to "code_Edit", edit_code_path(@code.id) %> /
+    <%= link_to "code_Delete", code_path(@code.id), method: :delete %>
 <% end %>

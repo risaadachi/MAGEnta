@@ -1,8 +1,10 @@
 <h1>User page</h1>
 
 <!-- User情報 -->
-<% if @user.profile_image.attached?%>
-<%= image_tag @user.profile_image, :size => '80x80' %> /
+<% if @user.profile_image.attached? %>
+	<%= image_tag @user.profile_image, :size => '100x100' %> /
+<% else %>
+    <%= image_tag "noimage.png", :size => '100x100' %> /
 <% end %>
 <%= @user.name %> /
 <%= @user.gender %> /
@@ -16,11 +18,25 @@
 
 <!-- Code情報 -->
 <% @codes.each do |code| %>
-<% if code.photos.attached? %>
-<% code.photos.count.times do |i| %>
-    <%= image_tag code.photos[i], :size => '200x200' %><br>
+	<% if code.photos.attached? %>
+		<% code.photos.count.times do |i| %>
+		<%= image_tag code.photos[i], :size => '200x200' %><br>
+	    <% end %>
+	    <%= link_to "show", code_path(code.id) %>
+	<% end %>
+	<%= code.title %><br>
+
+	    <!-- tag -->
+<% code.tags.each do |t| %>
+    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
 <% end %>
-    <%= link_to "詳細", code_path(code.id) %>
+
+
+	<!-- 編集と削除 -->
+	<% if code.user == current_user %>
+		<%= link_to "Edit", edit_code_path(code.id) %>
+		<%= link_to "Delete", code_path(code.id), method: :delete %><br>
+	<% end %>
 <% end %>
-    <%= code.title %><br>
-<% end %>
+
+

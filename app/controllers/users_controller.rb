@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 # adminß
 
   def admins_index
-    @users = User.all
+    @users = User.page(params[:page]).per(9)
   end
 
 #    @users = User.where(deleted_flag: "false").page(params[:page]).per(9)

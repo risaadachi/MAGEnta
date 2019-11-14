@@ -1,4 +1,22 @@
-<h1>コーデ一覧</h1>
+<h1>Coordinate</h1>
 
-<%= render 'codes/index', codes: @codes %>
+	<!-- 検索 -->
+<%= search_form_for @search, url: root_path do |s| %>
+    <%= s.search_field :title_or_body_or_user_name_or_tags_tagname_cont, placeholder: 'code,tag search' %>
+    <!-- , class: "search-box" -->
+    <%= s.submit "search" %>
+<% end %><br>
 
+	<!-- コーデ -->
+
+<%= render 'codes/index', codes: @search_codes %>
+
+	<!-- タグリスト -->
+
+<% @tag_list.each do |list| %>
+    <%= link_to list.tagname,root_path(tag_id:list.id) %><%= list.codes.count %><br>
+<% end %>
+
+	<!-- ページネーション -->
+
+<%= paginate @search_codes, class: "paginate" %>

@@ -19,11 +19,17 @@ has_many :codetags, foreign_key: :code_id, dependent: :destroy
   	  validates :body
       validates :user_id
     end
-
     # def thumbnail input
-    # 	return self.photos[input].variant(resize: '200x200!').processed
+    #   return self.photos[input].variant(resize: '200x200!').processed
     # end
 # !をつけたらオリジナル画像のサイズを無視してリサイズできる
+
+
+    is_impressionable counter_cache: true
+    # pv で閲覧したコーデを識別。コントローラのimpressionistの@codeがそれ
+    #  counter_cache: true　いるやつやった
+
+
 
   def save_codes(tags)
     unless self.tags.nil?

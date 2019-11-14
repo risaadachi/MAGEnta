@@ -18,7 +18,7 @@
 
 <!-- tag -->
 <% code.tags.each do |t| %>
-    <%= link_to t.tagname, codes_path(tag_id: t.id) %>
+    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
 <% end %>
 
 
