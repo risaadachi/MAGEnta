@@ -9,5 +9,6 @@
 			<%= image_tag rank.photos[i], :size => '200x200' %><br>
 		<% end %>
 	<% end %>
+    <%= link_to "show", code_path(rank.id) %>
     <%= rank.title %><br>
 <% end %>
