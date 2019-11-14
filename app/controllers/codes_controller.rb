@@ -1,7 +1,7 @@
 class CodesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :destroy]
   before_action :authenticate_admin!, only: [:admins_index, :admins_show, :admins_destroy, :admins_search]
-  impressionist :actions => [:show]
+  impressionist :actions => [:show], :unique => [:session_hash]
 
   def index
   	@codes = Code.all
@@ -19,6 +19,10 @@ class CodesController < ApplicationController
   end
 
   def search
+  end
+
+  def ranking
+    @mv = Code.order('impressions_count DESC').take(10)
   end
 
   def show

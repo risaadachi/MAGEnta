@@ -22,13 +22,14 @@
 
         <% elsif user_signed_in? %>
 
+        <li class=""><%= link_to "Ranking", codes_ranking_path %></li>
         <li class=""><%= link_to "#{current_user.name}", user_path(current_user.id) %></li>
         <li class=""><%= link_to "Post", new_code_path %></li>
         <li class=""><%= link_to "Contact", contacts_path %></li>
         <li class=""><%= link_to "Log_Out", destroy_user_session_path, method: :delete %></li>
 
         <% else %>
-
+        <li class=""><%= link_to "Ranking", codes_ranking_path %></li>
         <li class=""><%= link_to "New_User", new_user_registration_path %></li>
         <li class=""><%= link_to "Log_In", new_user_session_path %></li>
 

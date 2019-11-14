@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_111800) do
+ActiveRecord::Schema.define(version: 2019_11_14_081956) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_111800) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "impressions_count"
     t.index ["user_id", "created_at"], name: "index_codes_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_codes_on_user_id"
   end
@@ -105,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_111800) do
     t.text "params"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "impressions_count", default: 0
     t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
     t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
     t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"

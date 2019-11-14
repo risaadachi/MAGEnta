@@ -17,6 +17,7 @@ get 'users/admins_index' => 'users#admins_index', as:'users_admins'
 patch 'users/admins/deleted/:id' => 'users#admins_deleted_flag', as:'admins_deleted_flag'
 resources :users, only: [:update, :show, :edit, :destroy]
 
+get 'codes/ranking' => 'codes#ranking', as:'codes_ranking'
 get 'codes/admins_index' => 'codes#admins_index', as:'codes_admins'
 get 'codes/admins/:id' => 'codes#admins_show', as:'code_admins'
 delete 'codes/admins_delete/:id' => 'codes#admins_destroy', as:'code_admins_destroy'

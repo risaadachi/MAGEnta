@@ -25,8 +25,9 @@ has_many :codetags, foreign_key: :code_id, dependent: :destroy
 # !をつけたらオリジナル画像のサイズを無視してリサイズできる
 
 
-    is_impressionable
+    is_impressionable counter_cache: true
     # pv で閲覧したコーデを識別。コントローラのimpressionistの@codeがそれ
+    #  counter_cache: true　いるやつやった
 
 
 
