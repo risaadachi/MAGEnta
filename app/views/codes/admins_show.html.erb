@@ -3,5 +3,4 @@
 <%= render 'codes/show', code: @code %>
 
 <!-- 削除 -->
-
-<%= link_to "Delete", code_admins_destroy_path(@code.id), method: :delete %>
+<%= link_to "Delete", code_admins_destroy_path(@code.id), method: :delete, class: "btn btn-default col-xs-3" %>

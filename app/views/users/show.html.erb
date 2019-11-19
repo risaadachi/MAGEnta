@@ -1,42 +1,57 @@
-<h1>User page</h1>
+<div class="container">
+	<div class="row">
+		<h1>User page</h1>
 
-<!-- User情報 -->
-<% if @user.profile_image.attached? %>
-	<%= image_tag @user.profile_image, :size => '100x100' %> /
-<% else %>
-    <%= image_tag "noimage.png", :size => '100x100' %> /
-<% end %>
-<%= @user.name %> /
-<%= @user.gender %> /
-<%= @user.height %>cm /<br>
-
-
-<% if @user == current_user %>
-  <%= link_to "Edit", edit_user_path(@user.id) %><br>
-<% end %>
-
-
-<!-- Code情報 -->
-<% @codes.each do |code| %>
-	<% if code.photos.attached? %>
-		<% code.photos.count.times do |i| %>
-		<%= image_tag code.photos[i], :size => '200x200' %><br>
-	    <% end %>
-	    <%= link_to "show", code_path(code.id) %>
-	<% end %>
-	<%= code.title %><br>
-
-	    <!-- tag -->
-<% code.tags.each do |t| %>
-    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
-<% end %>
+			<!-- User情報 -->
+			<!-- user.photoが編集のlink -->
+		<div class="user_info">
+			<% if @user == current_user %>
+					<% if @user.profile_image.attached? %>
+						<%= link_to image_tag(@user.profile_image, size: '80x80'), edit_user_path(@user.id) %>
+					<% else %>
+						<%= link_to image_tag("noimage.png", size: '80x80'), edit_user_path(@user.id) %>
+					<% end %>
+			<% else %>
+					<% if @user.profile_image.attached? %>
+						<%= image_tag @user.profile_image, size: '80x80' %>
+					<% else %>
+						<%= image_tag "noimage.png", size: '80x80' %>
+					<% end %>
+			<% end %>
+			<%= @user.name %> /
+			<%= @user.gender %> /
+			<%= @user.height %>cm<br>
+        </div>
 
 
-	<!-- 編集と削除 -->
-	<% if code.user == current_user %>
-		<%= link_to "Edit", edit_code_path(code.id) %>
-		<%= link_to "Delete", code_path(code.id), method: :delete %><br>
-	<% end %>
-<% end %>
+			<!-- Code情報 -->
+			<% @codes.each do |code| %>
+			<div class="col-sm-3">
+				<% if code.photos.attached? %>
+				<% code.photos.count.times do |i| %>
+				<%= link_to image_tag(code.photos[i], size: '250x310'), code_path(code.id) %><br>
+				<% end %>
+				<% end %>
+				<%= code.title %><br>
+
+				<!-- 編集と削除 -->
+				<div style="text-align:center;">
+					<% if code.user == current_user %>
+					<%= link_to " Edit ", edit_code_path(code.id), class: "btn btn-default" %>
+					<%= link_to "Delete", code_path(code.id), method: :delete, class: "btn btn-default" %><br>
+					<% end %>
+			    </div>
+
+            </div>
+			<div class="col-sm-1">
+				<!-- tag -->
+				<h3>Tags</h3>
+				<% code.tags.each do |t| %>
+				<%= link_to t.tagname, root_path(tag_id: t.id) %><br>
+				<% end %>
+			</div>
 
 
+			<% end %>
+		</div>
+	</div>

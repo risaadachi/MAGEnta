@@ -1,15 +1,21 @@
-<% codes.each do |code| %>
-<% if code.photos.attached? %>
-<% code.photos.count.times do |i| %>
-    <%= image_tag code.photos[i], :size => '200x200' %><br>
-<% end %>
-    <%= link_to "show", code_path(code.id) %>
-<% end %>
-    <%= code.title %><br>
+<div class="container">
+	<div class="row">
 
-    <!-- tag -->
-<% code.tags.each do |t| %>
-    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
-<% end %>
+		<% codes.each do |code| %>
+			<div class="col-sm-4">
+				<% if code.photos.attached? %>
+					<% code.photos.count.times do |i| %>
+					    <%= link_to image_tag(code.photos[i], size: '200x200'), code_path(code.id) %><br>
+					<% end %>
+				<% end %>
+				    <%= code.title %><br>
 
-<% end %>
+				    <!-- tag -->
+				<% code.tags.each do |t| %>
+				    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
+				<% end %>
+			</div>
+			<p></p>
+		<% end %>
+	</div>
+</div>

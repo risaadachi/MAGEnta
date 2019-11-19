@@ -1,15 +1,19 @@
-<h1>Ranking</h1>
+<div class="container">
+	<div class="row">
+		<h1>Ranking</h1>
 
-
-<% @mv.each.with_index(1) do |rank, n| %>
-    Rank.No. <%= "#{n}" %><br>
-    <%= rank.impressions_count %> pv<br>
-    <% if rank.photos.attached? %>
-		<% rank.photos.count.times do |i| %>
-			<%= image_tag rank.photos[i], :size => '200x200' %><br>
+		<% @mv.each.with_index(1) do |rank, n| %>
+			<div class="col-sm-4">
+			    <h3 class="fav">Rank.No. <%= "#{n}" %></h3><br>
+			    <%= rank.impressions_count %>
+			    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><br>
+			    <% if rank.photos.attached? %>
+					<% rank.photos.count.times do |i| %>
+						<%=link_to image_tag(rank.photos[i], size: '250x310'),code_path(rank.id) %>
+				    <% end %>
+				<% end %>
+				<br>
+		    </div>
 		<% end %>
-	<% end %>
-    <%= rank.title %><br>
-    <%= link_to "show", code_path(rank.id) %><br>
-<br>
-<% end %>
+	</div>
+</div>

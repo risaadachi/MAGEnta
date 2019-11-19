@@ -65,6 +65,8 @@ gem 'devise'
 gem 'ransack'
 gem 'kaminari','~> 1.1.1'
 gem 'impressionist'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

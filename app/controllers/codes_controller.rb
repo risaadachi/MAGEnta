@@ -22,7 +22,7 @@ class CodesController < ApplicationController
   end
 
   def ranking
-    @mv = Code.order('impressions_count DESC').take(10)
+    @mv = Code.order('impressions_count DESC').take(12)
   end
 
   def show

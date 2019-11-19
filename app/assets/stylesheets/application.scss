@@ -1,0 +1,110 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*======== 設定 ========*/
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // background-color: #e4007f;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+.container {
+/*	background-color: #EEEEEE;
+*/
+	padding: 0;
+	width: 80%;
+}
+
+.header {
+	width: 100%;
+}
+
+.navbar-right {
+	margin-right: 0;
+}
+
+#slidemenu {
+	position: relative;
+	height: 50px;
+}
+
+.magenta {
+	position: relative;
+	top: 40px;
+	left: 80px;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5,　.col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+	padding: 0;
+}
+
+.table-scroll　{
+	color: #ffffff;
+	max-height: 80px;
+	overflow-x: hidden;
+}
+
+.table-scroll table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+.table-scroll table tbody tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.table-scroll table td {
+	width: 20%;
+	padding: 5px;
+}
+
+.fav {
+	color: #e4007f;
+}
+
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4 {
+	text-align: center;
+	height: 430px;
+}
+
+.center {
+	width: center;
+}
+
+.user_info {
+	height: 100px;
+}

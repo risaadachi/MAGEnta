@@ -11,6 +11,28 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
 //= require turbolinks
+//= require jquery
+//= require bootstrap-sprockets
 //= require_tree .
+
+// <% if code.photos.count > 1 %>
+// <script>
+// $<"#slideshow<%= codes %> > div:gt(0)").hide();
+
+
+// setInterval(function(){
+// 	$('#slideshow<%= codes %> > div:first')
+// 	.fadeOut(0)
+// 	.next()
+// 	.fadeIn(1000)
+// 	.end()
+// 	.appendTo('#slideshow<%= codes %>');
+// 	$('.grid').masonry('reloadItems');
+// 	$('.grid').masonry('layout');
+// },2000);
+
+// </script>
+// <% end %>
+
+

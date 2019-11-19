@@ -1,14 +1,26 @@
+<!-- コメント投稿スクロールのため、テーブル -->
+<div class="container">
+	<div class="row">
 
-<% comments.each do |c| %>
-<% if c.user.profile_image.attached? %>
-     <br><%= image_tag c.user.profile_image, :size => '60x60' %>
-<% end %>
-<%= c.user.name %>
-<%= c.created_at.strftime('%Y/%m/%d') %>
-<%= c.body %> <br>
+			<table>
+				<thead>
 
-<% if c.user == current_user %>
-    <%= link_to 'Delete', code_comments_path(c.id), method: :delete %>
-<!-- 非同期したい　, remote: true -->
-<% end %>
-<% end %>
+				</thead>
+				<tbody>
+					<% comments.each do |c| %>
+					<% if c.user.profile_image.attached? %>
+					<tr><td><%= image_tag c.user.profile_image, :size => '60x60' %></td>
+					<% end %>
+					<td><%= c.body %></td></tr>
+					<tr><td><%= c.user.name %></td>
+						<td><%= c.created_at.strftime('%Y/%m/%d') %></td>
+
+					<% if c.user == current_user %>
+					<td><%= link_to 'Delete', code_comments_path(c.id), method: :delete, class: "btn btn-default col-xs-4" %></td></tr>
+					<!-- 非同期したい　, remote: true -->
+				    <% end %>
+					<% end %>
+                </tbody>
+			</table>
+	</div>
+</div>

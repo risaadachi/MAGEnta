@@ -11,9 +11,11 @@
 
   <body>
     <header>
-      <ul class="nav navbar-nav navbar-right">
-        <%= link_to image_tag("logo.png", :size => '230x200'), root_path %>
+    <li class="magenta"><%= link_to image_tag("logo.png", :size => '170x85'), root_path %></li>
+    <div class="container">
+      <div id="slidemenu">
 
+      <ul class="nav navbar-nav navbar-right">
         <% if admin_signed_in? %>
 
         <li class=""><%= link_to "ユーザ一覧", users_admins_path %></li>
@@ -35,6 +37,8 @@
 
         <% end %>
       </ul>
+      </div>
+    </div>
     </header>
     <%= yield %>
   </body>
