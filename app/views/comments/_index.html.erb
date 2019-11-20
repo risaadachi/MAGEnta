@@ -8,8 +8,12 @@
 				</thead>
 				<tbody>
 					<% comments.each do |c| %>
+					<tr><td>
 					<% if c.user.profile_image.attached? %>
-					<tr><td><%= image_tag c.user.profile_image, :size => '60x60' %></td>
+						<%= link_to image_tag(c.user.profile_image, size: '60x60'), user_path(c.user.id) %>
+					<% else %>
+						<%= link_to image_tag("noimage.png", size: '60x60'), user_path(c.user.id) %>
+					</td>
 					<% end %>
 					<td><%= c.body %></td></tr>
 					<tr><td><%= c.user.name %></td>

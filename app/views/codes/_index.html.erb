@@ -5,7 +5,7 @@
 			<div class="col-sm-4">
 				<% if code.photos.attached? %>
 					<% code.photos.count.times do |i| %>
-					    <%= link_to image_tag(code.photos[i], size: '200x200'), code_path(code.id) %><br>
+					    <%= link_to image_tag(code.photos[i], size: '220x290'), code_path(code.id) %><br>
 					<% end %>
 				<% end %>
 				    <%= code.title %><br>
@@ -14,6 +14,13 @@
 				<% code.tags.each do |t| %>
 				    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
 				<% end %>
+
+                <!-- 管理者用画面 -->
+                <% if admin_signed_in? %>
+                    <%= link_to "管理者用コーディネート詳細画面", code_admins_path(code.id) %><br>
+                <% end %>
+
+
 			</div>
 			<p></p>
 		<% end %>

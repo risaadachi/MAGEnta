@@ -84,11 +84,12 @@ class CodesController < ApplicationController
 # admin
 
 def admins_index
-  @codes = Code.page(params[:page]).reverse_order
+  @codes = Code.page(params[:page]).per(15)
 end
 
 def admins_show
   @code = Code.find(params[:id])
+  @comments = @code.comments
 end
 
 def admins_destroy
