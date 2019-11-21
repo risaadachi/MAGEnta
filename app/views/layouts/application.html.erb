@@ -7,6 +7,22 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+  <link rel="stylesheets" href="/application.scss">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="javascripts/jquery.bxslider.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+      $('.bxslider').bxSlider({
+        auto: true,
+        slideWidth: 300,
+        minSlides: 2
+      });
+    });
+    </script>
+
   </head>
 
   <body>

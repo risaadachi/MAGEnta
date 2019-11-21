@@ -5,9 +5,11 @@
 			<div class="col-sm-4">
 				<% if code.photos.attached? %>
 					<% code.photos.count.times do |i| %>
-					    <%= link_to image_tag(code.photos[i], size: '220x290'), code_path(code.id) %><br>
+				<ul class="bxslider">
+					    <li><%= link_to image_tag(code.photos[i], size: '220x290'), code_path(code.id) %></li></ul><br>
 					<% end %>
 				<% end %>
+
 				    <%= code.title %><br>
 
 				    <!-- tag -->
