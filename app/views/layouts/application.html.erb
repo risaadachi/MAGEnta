@@ -2,36 +2,27 @@
 <html>
   <head>
     <title>MAGEnta</title>
+    <meta charset="utf-8" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <link rel="stylesheets" href="/application.scss">
 
-  <link rel="stylesheets" href="/application.scss">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="javascripts/jquery.bxslider.min.js"></script>
-
-    <script>
-    $(document).ready(function(){
-      $('.bxslider').bxSlider({
-        auto: true,
-        slideWidth: 300,
-        minSlides: 2
-      });
-    });
-    </script>
-
-  </head>
-
+ </head>
   <body>
     <header>
-    <li class="magenta"><%= link_to image_tag("logo.png", :size => '170x85'), root_path %></li>
+
+    <!-- ロゴ -->
+    <li class="magenta"><%= link_to image_tag("logo.png", :size => '160x75'), root_path %></li>
+
     <div class="container">
       <div id="slidemenu">
 
       <ul class="nav navbar-nav navbar-right">
+
         <% if admin_signed_in? %>
 
         <li class=""><%= link_to "ユーザ一覧", users_admins_path %></li>
@@ -43,13 +34,13 @@
         <li class=""><%= link_to "Ranking", codes_ranking_path %></li>
         <li class=""><%= link_to "#{current_user.name}", user_path(current_user.id) %></li>
         <li class=""><%= link_to "Post", new_code_path %></li>
-        <li class=""><%= link_to "Contact", contacts_path %></li>
-        <li class=""><%= link_to "Log_Out", destroy_user_session_path, method: :delete %></li>
+<!--         <li class=""><%= link_to "Contact", contacts_path %></li> -->
+        <li class=""><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
 
         <% else %>
         <li class=""><%= link_to "Ranking", codes_ranking_path %></li>
-        <li class=""><%= link_to "New_User", new_user_registration_path %></li>
-        <li class=""><%= link_to "Log_In", new_user_session_path %></li>
+        <li class=""><%= link_to "New User", new_user_registration_path %></li>
+        <li class=""><%= link_to "Log In", new_user_session_path %></li>
 
         <% end %>
       </ul>
@@ -57,5 +48,23 @@
     </div>
     </header>
     <%= yield %>
+
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="javascripts/jquery.bxslider.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $('.bxslider').bxSlider({
+        auto: true,
+        slideWidth: 300,
+        minSlides: 2
+      });
+    });
+    </script>
+
+
+
   </body>
 </html>

@@ -1,32 +1,51 @@
 <div class="container">
 	<div class="row">
-		<div class="col-sm-2">
+		<div class="col-sm-3">
 			<div class="text-align-left">
 				<h1>Home</h1>
 
 				<!-- 検索 -->
-				<%= search_form_for @search, url: root_path do |s| %>
-				<%= s.search_field :title_or_body_or_user_name_or_tags_tagname_cont, placeholder: 'code,tag search' %>
-				<!-- , class: "search-box" -->
-				<%= s.submit "search" %>
-				<% end %><br>
-				<!-- タグリスト -->
-				<div class="taglist">
-					<% @tag_list.each do |list| %>
-					<%= link_to list.tagname,root_path(tag_id:list.id) %><%= list.codes.count %><br>
-					<% end %>
+				<div class="search-bar">
+					<%= search_form_for @search, url: root_path do |s| %>
+					<%= s.search_field :title_or_body_or_user_name_or_tags_tagname_cont, placeholder: "          code'n'tags", class: "search-box" %>
+				<div class="search">
+					<%= s.submit ("search"), :class=>"fa fa-search" %>
 				</div>
+				<% end %>
+			    </div><br>
+
+				<!-- タグリスト　ランダムで３０個のせる -->
+					<div class="taglist">
+						<% @tag_list.shuffle.first(30).each do |list| %>
+						<%= link_to list.tagname,root_path(tag_id:list.id) %> ( <%= list.codes.count %> )<br>
+						<% end %>
+					</div>
 			</div>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-9">
 			<!-- コーデ -->
 
 			<%= render 'codes/index', codes: @search_codes %>
+
+
 		</div>
+	</div>
+			<!-- ページネーション -->
+	<div class="header">
+		<div class="text-align-center"><%= paginate @search_codes, class: "paginate" %></div>
 	</div>
 </div>
 
-<!-- ページネーション -->
-<div class="text-align-center">
-	<%= paginate @search_codes, class: "paginate" %>
-</div>
+
+
+
+<script>
+
+		// Search Toggle //
+	$( ".search" ).click(function() {
+	 $( "ul" ).toggleClass( "active" );
+	 $( ".search_box" ).toggleClass( "search_box_active" );
+	});
+
+</script>
+

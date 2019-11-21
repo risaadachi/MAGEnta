@@ -1,6 +1,6 @@
 <div class="container">
-	<div class="row">
 		<h1>Ranking</h1>
+	<div class="row">
 
 		<% @mv.each.with_index(1) do |rank, n| %>
 			<div class="col-sm-4">
@@ -13,7 +13,7 @@
 						<li><%=link_to image_tag(rank.photos[i], size: '250x310'),code_path(rank.id) %></ul></li>
 				    <% end %>
 				<% end %>
-			    
+
 				<br>
 		    </div>
 		<% end %>
