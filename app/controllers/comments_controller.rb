@@ -4,13 +4,11 @@ class CommentsController < ApplicationController
   def index
   end
 
-
   def create
   	code = Code.find(params[:code_id])
   	comment = current_user.comments.new(comment_params)
   	comment.code_id = code.id
-  	comment.save!
-    redirect_to code_path(code.id)
+  	comment.save
   end
 
   def destroy

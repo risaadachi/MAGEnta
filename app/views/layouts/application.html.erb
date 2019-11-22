@@ -5,18 +5,18 @@
     <meta charset="utf-8" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheets" href="/application.scss">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="stylesheets" href="/application.scss">
 
  </head>
   <body>
     <header>
 
     <!-- ロゴ -->
-    <li class="magenta"><%= link_to image_tag("logo.png", :size => '160x75'), root_path %></li>
+            <div class="magenta"><%= link_to image_tag("logo.png", :size => '160x75'), root_path %></div>
 
     <div class="container">
       <div id="slidemenu">
@@ -52,8 +52,7 @@
 
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="javascripts/jquery.bxslider.min.js"></script>
+ 
     <script>
     $(document).ready(function(){
       $('.bxslider').bxSlider({

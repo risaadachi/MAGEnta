@@ -1,5 +1,5 @@
 class CodesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :authenticate_admin!, only: [:admins_index, :admins_show, :admins_destroy, :admins_search]
   impressionist :actions => [:show], :unique => [:session_hash]
 

@@ -1,8 +1,12 @@
-<div class="form-wrapper">
+<div class="back2">
+  <div class="form-wrapper">
 
     <h2>Log in</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control input-sm" %>
@@ -28,4 +32,5 @@
     <div class="helper">
       <%= render "users/shared/links" %>
     </div>
+  </div>
 </div>
