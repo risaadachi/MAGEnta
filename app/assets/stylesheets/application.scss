@@ -229,9 +229,15 @@ a{
 	margin: 0 0 0 25px ;
 }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5,　.col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-5,　.col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
 	padding: 0;
 }
+
+ .col-xs-4 {
+  padding: 10px 0;
+  height: 450px;
+  text-align: center;
+ }
 
 .col-xs-7 {
   height: 520px;
@@ -415,6 +421,8 @@ a{
 ===================================*/
 .bx-wrapper {
   position: relative;
+  width: 80%;
+  margin: auto;
   margin-bottom: 60px;
   padding: 0;
   *zoom: 1;
@@ -426,7 +434,7 @@ a{
   display: block;
 }
 .bxslider {
-  margin: 0;
+  margin: center;
   padding: 0;
 }
 ul.bxslider {
@@ -439,12 +447,8 @@ ul.bxslider {
 /** THEME
 ===================================*/
 .bx-wrapper {
-  -moz-box-shadow: 0 0 5px #ccc;
-  -webkit-box-shadow: 0 0 5px #ccc;
-  box-shadow: 0 0 5px #ccc;
-  border: 5px solid #fff;
-  background: #fff;
 }
+
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
   position: absolute;
@@ -472,7 +476,7 @@ ul.bxslider {
   padding-top: 20px;
 }
 .bx-wrapper .bx-pager.bx-default-pager a {
-  background: #666;
+  background: #2e2f40;
   text-indent: -9999px;
   display: block;
   width: 10px;

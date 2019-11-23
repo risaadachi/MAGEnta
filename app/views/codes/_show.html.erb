@@ -13,9 +13,11 @@
 
 <!-- codeの情報 -->
 <div class="col-xs-7">
-	<% code.photos.count.times do |i| %>
-	<%= image_tag code.photos[i], :size => '480x500' %><br>
-	<% end %>
+	<ul class="bxslider">
+		<% code.photos.count.times do |i| %>
+		<%= image_tag code.photos[i], :size => '460x500' %>
+		<% end %>
+    </ul>
 </div>
 <div class="col-xs-5">
 
