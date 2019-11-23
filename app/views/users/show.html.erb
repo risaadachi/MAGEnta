@@ -28,23 +28,25 @@
 			<% @codes.each do |code| %>
 			<div class="col-sm-3">
 				<% if code.photos.attached? %>
-				<% code.photos.count.times do |i| %>
-				<%= link_to image_tag(code.photos[i], size: '250x310'), code_path(code.id) %><br>
+				<ul class="bxslider">
+					<% code.photos.count.times do |i| %>
+					<%= link_to image_tag(code.photos[i], size: '250x280'), code_path(code.id) %>
+					<% end %>
+			    </ul>
 				<% end %>
-				<% end %>
-				<%= code.title %><br>
 
 				<!-- 編集と削除 -->
-				<div style="text-align:center;">
+				<div style="text-align:right;">
 					<% if code.user == current_user %>
 					<%= link_to " Edit ", edit_code_path(code.id), class: "btn btn-default" %>
-					<%= link_to "Delete", code_path(code.id), method: :delete, class: "btn btn-default" %><br>
+					<%= link_to "Delete", code_path(code.id), method: :delete, class: "btn btn-default" %>
 					<% end %>
 			    </div>
 
             </div>
 			<div class="col-sm-1">
 				<!-- tag -->
+				<%= code.title %><br>
 				<h3>Tags</h3>
 				<% code.tags.each do |t| %>
 				<%= link_to t.tagname, root_path(tag_id: t.id) %><br>

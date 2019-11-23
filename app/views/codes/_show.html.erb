@@ -21,14 +21,16 @@
 </div>
 <div class="col-xs-5">
 
-	<%= code.created_at.strftime('%Y/%m/%d %H:%M') %><br>
-	<%= code.title %><br>
-	<%= code.body %><br>
+	Title : <%= code.title %><br>
+	Explanation : <%= code.body %><br>
 
 	<!-- tag -->
-	<% code.tags.each do |t| %>
-	<%= link_to t.tagname, root_path(tag_id: t.id) %><br>
+	Tags : <% code.tags.each do |t| %>
+	<%= link_to t.tagname, root_path(tag_id: t.id) %> / 
 	<% end %>
+	<br>
+	Post date : <%= code.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+
 	<!-- 編集と削除 -->
 	<% if @code.user == current_user %>
 	<%= link_to "code_Edit", edit_code_path(@code.id), class: "btn btn-default col-xs-3" %>
