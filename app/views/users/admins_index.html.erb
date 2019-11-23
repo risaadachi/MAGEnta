@@ -1,13 +1,24 @@
-<h1>管理者　ユーザ一覧</h1>
+<div class="container">
+	<div class="row">
 
-<% @users.each do |user| %>
-	<% if user.profile_image.attached?%>
-    <%= image_tag user.profile_image, :size => '80x80' %> <br>
-    <% end %>
-    ★<%= user.name %> <br>
-    <%= user.gender %> <br>
-    <%= user.height %>cm <br>
-    <br>
-<% end %>
+		<h1>管理者　ユーザ一覧</h1>
 
-<%= paginate @users, class: "paginate" %>
+		<div class="user_index">
+			<% @users.each do |user| %>
+				<div class="col-sm-3">
+					<% if user.profile_image.attached?%>
+					    <%= image_tag user.profile_image, :size => '80x80' %> <br>
+				    <% else %>
+						<%= image_tag "noimage.png", size: '80x80' %> <br>
+				    <% end %>
+				    <%= user.name %> <br>
+				    <%= user.gender %> <br>
+				    <%= user.height %>cm <br>
+				    <br>
+				</div>
+			<% end %>
+        </div>
+
+		<%= paginate @users, class: "paginate" %>
+    </div>
+</div>

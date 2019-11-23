@@ -1,5 +1,9 @@
-<h1>adminsコーデ一覧</h1>
+<div class="container">
+	<div class="row">
 
-<%= render 'code/index', codes: @codes %>
+		<h1>管理者　コーデ一覧</h1>
+		<%= render 'codes/index', codes: @codes %>
+		<%= paginate @codes, class: "paginate" %>
 
-<%= paginate @codes, class: "paginate" %>
+	</div>
+</div>

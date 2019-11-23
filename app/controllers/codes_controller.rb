@@ -1,5 +1,5 @@
 class CodesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :authenticate_admin!, only: [:admins_index, :admins_show, :admins_destroy, :admins_search]
   impressionist :actions => [:show], :unique => [:session_hash]
 
@@ -22,7 +22,7 @@ class CodesController < ApplicationController
   end
 
   def ranking
-    @mv = Code.order('impressions_count DESC').take(10)
+    @mv = Code.order('impressions_count DESC').take(12)
   end
 
   def show
@@ -84,11 +84,12 @@ class CodesController < ApplicationController
 # admin
 
 def admins_index
-  @codes = Code.page(params[:page]).reverse_order
+  @codes = Code.page(params[:page]).per(15)
 end
 
 def admins_show
   @code = Code.find(params[:id])
+  @comments = @code.comments
 end
 
 def admins_destroy

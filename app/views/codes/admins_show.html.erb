@@ -1,7 +1,19 @@
-<h1>Codes</h1>
+<div class="container">
+	<div class="row">
 
-<%= render 'codes/show', code: @code %>
+		<h1>管理者用コーディネート詳細</h1>
 
-<!-- 削除 -->
+		<%= render 'codes/show', code: @code %>
+		<!-- 削除 -->
+		<%= link_to "Delete", code_admins_destroy_path(@code.id), method: :delete, class: "btn btn-danger" %><br>
 
-<%= link_to "Delete", code_admins_destroy_path(@code.id), method: :delete %>
+
+		<!-- コメント -->
+		コメント数<%= @code.comments.count %> 件<br>
+		<div class="table-scroll">
+		    <%= render 'comments/index', comments: @comments, code: @code %><br>
+		</div>
+
+
+	</div>
+</div>
