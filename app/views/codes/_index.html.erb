@@ -11,9 +11,9 @@
 
 				    <%= code.title %><br>
 
-				    <!-- tag -->
-				<% code.tags.each do |t| %>
-				    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
+				    <!-- tag  タグ５個ランダムで表示　-->
+				<% code.tags.shuffle.first(5).each do |t| %>
+				    <%= link_to t.tagname, root_path(tag_id: t.id) %> 
 				<% end %>
 
                 <!-- 管理者用画面 -->
