@@ -6,7 +6,8 @@
 
 		<div class="field-1">
 			<% @code.photos.count.times do |i| %>
-			<%= image_tag @code.photos[i], :size => '95x125' %><br>
+			<%= form.check_box :photos_ids, {:multiple => true}, photo_id, false %>
+			<%= image_tag @code.photos[i], :size => '95x125' %>
 			<% end %>
 			<%= f.file_field :photos, multiple: true, class: "form-control input-sm" %>
 		</div><br>

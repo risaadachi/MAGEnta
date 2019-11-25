@@ -62,6 +62,7 @@ class CodesController < ApplicationController
   def edit
   	@code = Code.find(params[:id])
     @tag_list = @code.tags.pluck(:tagname).join(",")
+
   end
 
   def update
@@ -104,4 +105,5 @@ def code_params
  # params.require(:code).permit(:user_id, :title, :body, {photos: []}, {tag_id: []})
   params.require(:code).permit(:user_id, :title, :body, {photos: []}, {:tag_ids　=> [] })
 end
+
 end

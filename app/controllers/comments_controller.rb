@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
   	comment = current_user.comments.new(comment_params)
   	comment.code_id = code.id
   	comment.save
+    @comments = code.comments
   end
 
   def destroy

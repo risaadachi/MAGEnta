@@ -1,10 +1,10 @@
-
+<div class="table-scroll">
 		<% codes.each do |code| %>
 			<div class="col-xs-4">
 				<% if code.photos.attached? %>
 				<ul class="bxslider">
 					<% code.photos.count.times do |i| %>
-					<li><%= link_to image_tag(code.photos[i], size: '220x290'), code_path(code.id) %></li>
+					<li><%= link_to image_tag(code.photos[i], :resize => '220x290'), code_path(code.id) %></li>
 					<% end %>
 				</ul>
 				<% end %>
@@ -23,3 +23,4 @@
 
 			</div>
 		<% end %>
+</div>

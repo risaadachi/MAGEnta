@@ -30,6 +30,11 @@ has_many :codetags, foreign_key: :code_id, dependent: :destroy
     #  counter_cache: true　いるやつやった
 
 
+def thumbnail input
+  return self.photos[input].variant(resize: '460x500').processed
+end
+
+
 
   def save_codes(tags)
     unless self.tags.nil?
@@ -52,4 +57,23 @@ has_many :codetags, foreign_key: :code_id, dependent: :destroy
       # self.tags.push(code_tag)と一緒の意味
     end
   end
+
+
+  private
+
+
+# active storageのバリデーション
+  def image_type
+    if image.attached? && image.content_type.in?(%("image/jpeg image/png"))
+      errors.add(:image, 'needs to be a JPEG or PNG')
+    elsif !image.attached?
+      errors.add(:image, 'error message')
+    end
+  end
+
+
+
+
+
+
 end
