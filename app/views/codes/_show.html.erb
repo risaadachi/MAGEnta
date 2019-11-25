@@ -2,9 +2,9 @@
 <!-- userの情報 -->
 <div class="user_info">
 <% if code.user.profile_image.attached? %>
-	<%= image_tag code.user.profile_image, :size => '80x80' %>
+	<%= image_tag code.user.profile_image.variant(resize: '80x80!') %>
 <% else %>
-	<%= image_tag "noimage.png", :size => '80x80' %> 
+	<%= image_tag "noimage.png".variant(resize: '80x80!') %> 
 <% end %>
 <%= link_to "#{code.user.name}", user_path(code.user.id) %> /
 <%= code.user.gender %> /
@@ -15,7 +15,7 @@
 <div class="col-xs-7">
 	<ul class="bxslider">
 		<% code.photos.count.times do |i| %>
-		<%= image_tag code.photos[i], :size => '460x500' %>
+		<%= image_tag code.photos[i].variant(resize: '460x500!') %>
 		<% end %>
     </ul>
 </div>
@@ -33,8 +33,8 @@
 
 	<!-- 編集と削除 -->
 	<% if @code.user == current_user %>
-	<%= link_to "code_Edit", edit_code_path(@code.id), class: "btn btn-default col-xs-3" %>
-	<%= link_to "code_Delete", code_path(@code.id), method: :delete, class: "btn btn-default col-xs-3" %>
+		<%= link_to "code_Edit", edit_code_path(@code.id), class: "btnlike" %>
+		<%= link_to "code_Delete", code_path(@code.id), method: :delete, class: "btnlike" %>
 	<% end %>
 </div>
 

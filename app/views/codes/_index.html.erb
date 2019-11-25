@@ -1,19 +1,19 @@
-
+<div class="table-scroll">
 		<% codes.each do |code| %>
 			<div class="col-xs-4">
 				<% if code.photos.attached? %>
 				<ul class="bxslider">
 					<% code.photos.count.times do |i| %>
-					<li><%= link_to image_tag(code.photos[i], size: '220x290'), code_path(code.id) %></li>
+					<li><%= link_to image_tag(code.photos[i], :resize => '220x290'), code_path(code.id) %></li>
 					<% end %>
 				</ul>
 				<% end %>
 
 				    <%= code.title %><br>
 
-				    <!-- tag -->
-				<% code.tags.each do |t| %>
-				    <%= link_to t.tagname, root_path(tag_id: t.id) %><br>
+				    <!-- tag  タグ５個ランダムで表示　-->
+				<% code.tags.shuffle.first(5).each do |t| %>
+				    <%= link_to t.tagname, root_path(tag_id: t.id) %> 
 				<% end %>
 
                 <!-- 管理者用画面 -->
@@ -23,3 +23,4 @@
 
 			</div>
 		<% end %>
+</div>
