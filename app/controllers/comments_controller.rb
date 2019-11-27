@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:create, :destroy]
 
   def index
   end
@@ -8,7 +8,11 @@ class CommentsController < ApplicationController
   	code = Code.find(params[:code_id])
   	comment = current_user.comments.new(comment_params)
   	comment.code_id = code.id
-  	comment.save
+  	if comment.save
+    else
+      flash.now[:notice] = "コメントは0文字以上200文字以下で投稿してください。"
+      redirect_to code_path(code.id)
+    end
     @comments = code.comments
   end
 

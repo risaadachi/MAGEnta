@@ -260,7 +260,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
-  image_processing (~> 1.2)
+  image_processing
   impressionist
   jbuilder (~> 2.5)
   jquery-rails

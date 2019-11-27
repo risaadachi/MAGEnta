@@ -64,16 +64,12 @@ end
 
 # active storageのバリデーション
   def image_type
-    if image.attached? && image.content_type.in?(%("image/jpeg image/png"))
-      errors.add(:image, 'needs to be a JPEG or PNG')
+    if image.attached? && image.content_type.in?(%("image/jpg image/jpeg image/png"))
+      errors.add(:image, 'needs to be a JPEG or PNG or JPG')
     elsif !image.attached?
       errors.add(:image, 'error message')
     end
   end
-
-
-
-
 
 
 end

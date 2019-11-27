@@ -11,8 +11,8 @@ class CodesController < ApplicationController
     # distinct: true 重複を避ける
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
-      @codes = @tag.codes.order(time: "DESC")
-      # order(time: "DESC")　時間の降順
+      @codes = Codetag.where(tag_id: @tag.id).order(time: "DESC")
+    # 時間の降順
     else
       @codes = Code.order(time: "DESC")
     end
@@ -33,7 +33,7 @@ class CodesController < ApplicationController
     @comments = @code.comments
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
-      @codes = @tag.codes.order(time: "DESC")
+      @codes = Codetag.where(tag_id: @tag.id).order(time: "DESC")
       # order(time: "DESC")　時間の降順
     else
       @codes = Code.order(time: "DESC")
@@ -70,6 +70,7 @@ class CodesController < ApplicationController
     @tag_list = params[:code][:tagname].split(",")
     if code.update!(code_params)
       code.save_codes(@tag_list)
+      flash.now[:notice] = "投稿したコーディネートを更新しました"
       redirect_to code_path(code)
     else
       render 'edit'
@@ -94,6 +95,9 @@ def admins_show
 end
 
 def admins_destroy
+    code = Code.find(params[:id])
+    code.destroy
+    redirect_to codes_admins_path
 end
 
 def admins_search
