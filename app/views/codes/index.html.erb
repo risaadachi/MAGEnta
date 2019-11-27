@@ -23,9 +23,13 @@
 			</div>
 		</div>
 		<div class="col-sm-9">
-			<!-- コーデ -->
 
-			<%= render 'codes/index', codes: @search_codes %>
+					<!-- コーデ -->
+		    <% if @tag.present? %>
+					<%= render 'codes/index1', codes: @codes %>
+			<% else %>
+					<%= render 'codes/index', codes: @search_codes %>
+			<% end %>
 
 
 		</div>

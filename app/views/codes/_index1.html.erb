@@ -1,0 +1,26 @@
+<div class="table-scroll">
+		<% codes.each do |code| %>
+			<div class="col-xs-4">
+				<% if code.code.photos.attached? %>
+				<ul class="bxslider">
+					<% code.code.photos.count.times do |i| %>
+					<div class="codephoto"><%= link_to image_tag(code.code.photos[i], :size => '215x270'), code_path(code.code.id) %></div>
+					<% end %>
+				</ul>
+				<% end %>
+
+				    <%= code.code.title %><br>
+
+				    <!-- tag  タグ５個ランダムで表示　-->
+				<% code.code.tags.shuffle.first(5).each do |t| %>
+				    <%= link_to t.tagname, root_path(tag_id: t.id) %> 
+				<% end %>
+
+                <!-- 管理者用画面 -->
+                <% if admin_signed_in? %>
+                    <%= link_to "管理者用コーディネート詳細画面", code_admins_path(code.code.id) %><br>
+                <% end %>
+
+			</div>
+		<% end %>
+</div>

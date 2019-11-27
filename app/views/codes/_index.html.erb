@@ -4,7 +4,7 @@
 				<% if code.photos.attached? %>
 				<ul class="bxslider">
 					<% code.photos.count.times do |i| %>
-					<li><%= link_to image_tag(code.photos[i], :resize => '220x290'), code_path(code.id) %></li>
+					<div class="codephoto"><%= link_to image_tag(code.photos[i], :resize => '215x270'), code_path(code.id) %></div>
 					<% end %>
 				</ul>
 				<% end %>
