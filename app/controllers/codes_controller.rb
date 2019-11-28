@@ -11,10 +11,9 @@ class CodesController < ApplicationController
     # distinct: true 重複を避ける
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
-      @codes = Codetag.where(tag_id: @tag.id).order(time: "DESC")
-    # 時間の降順
+      @codes = Codetag.where(tag_id: @tag.id).order("id")
     else
-      @codes = Code.order(time: "DESC")
+      @codes = Code.order("id")
     end
   end
 
@@ -33,10 +32,9 @@ class CodesController < ApplicationController
     @comments = @code.comments
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
-      @codes = Codetag.where(tag_id: @tag.id).order(time: "DESC")
-      # order(time: "DESC")　時間の降順
+      @codes = Codetag.where(tag_id: @tag.id).order("id")
     else
-      @codes = Code.order(time: "DESC")
+      @codes = Code.order("id")
     end
 
   end
