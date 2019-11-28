@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   	comment.code_id = code.id
   	if comment.save
     else
-      flash.now[:notice] = "コメントは0文字以上200文字以下で投稿してください。"
+      flash.now[:aaa] = "コメントは0文字以上200文字以下で投稿してください。"
       redirect_to code_path(code.id)
     end
     @comments = code.comments

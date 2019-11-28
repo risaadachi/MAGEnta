@@ -68,7 +68,7 @@ class CodesController < ApplicationController
     @tag_list = params[:code][:tagname].split(",")
     if code.update!(code_params)
       code.save_codes(@tag_list)
-      flash.now[:notice] = "投稿したコーディネートを更新しました"
+      flash.now[:aaa] = "投稿したコーディネートを更新しました"
       redirect_to code_path(code)
     else
       render 'edit'
