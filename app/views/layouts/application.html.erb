@@ -16,7 +16,7 @@
     <header>
 
     <!-- ロゴ -->
-            <div class="magenta"><%= link_to image_tag("logo.png", :size => '160x75'), root_path %></div>
+    <div class="magenta"><%= link_to image_tag("logo.png", :size => '160x75'), root_path %></div>
 
     <div class="container">
       <div id="slidemenu">
@@ -33,7 +33,7 @@
         <li class=""><%= link_to "Ranking", codes_ranking_path %></li>
         <li class=""><%= link_to "#{current_user.name}", user_path(current_user.id) %></li>
         <li class=""><%= link_to "Post", new_code_path %></li>
-<!--         <li class=""><%= link_to "Contact", contacts_path %></li> -->
+        <li class=""><%= link_to "Contact", contacts_path %></li>
         <li class=""><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
 
         <% else %>
