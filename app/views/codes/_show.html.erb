@@ -1,14 +1,14 @@
 
 <!-- userの情報 -->
 <div class="user_info">
-<% if code.user.profile_image.attached? %>
-	<%= image_tag code.user.profile_image.variant(resize: '80x80!') %>
-<% else %>
-	<%= image_tag "noimage.png", size: '80x80' %>
-<% end %>
-<%= link_to "#{code.user.name}", user_path(code.user.id) %> /
-<%= code.user.gender %> /
-<%= code.user.height %>cm<br>
+	<% if code.user.profile_image.attached? %>
+		<%= image_tag code.user.profile_image.variant(resize: '80x80!') %>
+	<% else %>
+		<%= image_tag "noimage.png", size: '80x80' %>
+	<% end %>
+	<%= link_to "#{code.user.name}", user_path(code.user.id) %> /
+	<%= code.user.gender %> /
+	<%= code.user.height %>cm<br>
 </div>
 
 <!-- codeの情報 -->

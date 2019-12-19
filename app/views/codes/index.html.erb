@@ -7,7 +7,7 @@
 				<!-- 検索 -->
 				<div class="search-bar">
 					<%= search_form_for @search, url: root_path do |s| %>
-					<%= s.search_field :title_or_body_or_user_name_or_tags_tagname_cont, placeholder: "          code'n'tags", class: "search-box" %>
+					<%= s.search_field :title_or_body_or_user_name_or_tags_tagname_cont, placeholder: "code'n'tags", class: "search-box" %>
 				<div class="search">
 					<%= s.submit ("search"), :class=>"fa fa-search" %>
 				</div>

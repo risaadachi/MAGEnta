@@ -9,9 +9,9 @@
 				</ul>
 				<% end %>
 
-				    <%= code.title %><br>
+			    <%= code.title %><br>
 
-				    <!-- tag  タグ５個ランダムで表示　-->
+				<!-- tag  タグ５個ランダムで表示　-->
 				<% code.tags.shuffle.first(5).each do |t| %>
 				    <%= link_to t.tagname, root_path(tag_id: t.id) %> 
 				<% end %>
